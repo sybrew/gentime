@@ -57,6 +57,8 @@ GenTime shows the page generation time in the WordPress admin bar.
 
 == Other Notes ==
 
+[Source on Github](https://github.com/sybrew/gentime).
+
 > This plugin currently has two filters.
 > Add any of these filters to your theme's functions.php or a plugin to change how this plugin works.
 
