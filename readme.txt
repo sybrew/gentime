@@ -1,31 +1,59 @@
 === GenTime ===
 Contributors: Cybr
-Tags: adminbar, admin, bar, generation, time, load, php, speed
+Tags: admin bar, generation, time, load, php, speed, performance
 Requires at least: 3.1.0
-Tested up to: 4.6.0
-Stable tag: 1.0.4
+Tested up to: 5.8
+Requires PHP: 5.6.0
+Stable tag: 1.1.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-GenTime shows the page generation time in the WordPress admin bar.
+GenTime accurately shows the page generation time in the WordPress admin bar.
 
 == Description ==
 
 = GenTime =
 
-**This plugin simply shows you the time in seconds on how fast your page loads in 3 decimals.**
+This plugin shows site administrators the time in seconds of how fast the page loaded in the WordPress admin bar.
 
-= Other notes =
-
-> <strong>Check out the "Other Notes" tab for filters</strong>
+That's it, pretty simple!
 
 == Installation ==
 
-1. Install GenTime either via the WordPress.org plugin directory, or by uploading the files to your server.
+1. Install GenTime either via the WordPress.org plugin directory or upload the files to your server.
 1. Either Network Activate this plugin or activate it on a single site.
 1. That's it!
 
+= Filters =
+
+**Changes the minimum role for which the GenTime is shown:**
+
+`
+add_filter( 'gentime_minimum_role', 'my_gentime_minimum_role' );
+function my_gentime_minimum_role( $default = 'install_plugins' ) {
+
+    // See http://codex.wordpress.org/Roles_and_Capabilities for a list of role names
+    $role = 'edit_pages';
+
+    return $role;
+}
+`
+
+**Changes the number of decimals to output:**
+`
+add_filter( 'gentime_decimals', 'my_gentime_decimals' );
+function my_gentime_decimals( $default = 3 ) {
+    return 4;
+}
+`
+
 == Changelog ==
+
+= 1.1.0 =
+* Added: Now uses WordPress 5.8's more accurate function, when available, `timer_float()`.
+* Updated: Now uses HTML5 for the styles output.
+* Other: Refactored the plugin to support PHP 5.6 or later, from 5.2 or later.
+* Other: Cleaned up code.
 
 = 1.0.4 =
 * Fixed: This plugin is now converted to UNIX line feed.
@@ -54,32 +82,3 @@ GenTime shows the page generation time in the WordPress admin bar.
 
 = 1.0.0 =
 * Initial Release
-
-== Other Notes ==
-
-[Source on Github](https://github.com/sybrew/gentime).
-
-> This plugin currently has two filters.
-> Add any of these filters to your theme's functions.php or a plugin to change how this plugin works.
-
-== Filters ==
-
-= Since 1.0.0 =
-
-***Changes the minimum role for which the GenTime is shown:***
-`add_filter( 'gentime_minimum_role', 'my_gentime_minimum_role' );
-function my_gentime_minimum_role() {
-
-    // See http://codex.wordpress.org/Roles_and_Capabilities for a list of role names
-    $role = 'edit_pages'; // default: 'install_plugins'
-
-    return $role;
-}`
-
-***Changes the number of decimals to output:***
-`add_filter( 'gentime_decimals', 'my_gentime_decimals' );
-function my_gentime_decimals() {
-    $decimals = 4; // default: 3
-
-    return $decimals;
-}`
