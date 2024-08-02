@@ -1,14 +1,14 @@
-=== GenTime ===
+=== GenTime: Inspect page generation time ===
 Contributors: Cybr
-Tags: admin bar, generation, time, load, php, speed, performance
+Tags: admin bar, generation, performance, time, php
 Requires at least: 3.1.0
-Tested up to: 5.8
+Tested up to: 6.6.1
 Requires PHP: 5.6.0
 Stable tag: 1.1.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-GenTime accurately shows the page generation time in the WordPress admin bar.
+GenTime accurately shows the page generation time in your WordPress admin bar.
 
 == Description ==
 
@@ -48,6 +48,11 @@ function my_gentime_decimals( $default = 3 ) {
 `
 
 == Changelog ==
+
+= 2.0.0 =
+
+* Changed: This plugin now requires PHP 7.4, from PHP 5.2.
+* Changed: The plugin's rewritten; its old functions are no longer available.
 
 = 1.1.0 =
 * Added: Now uses WordPress 5.8's more accurate function, when available, `timer_float()`.
