@@ -29,11 +29,15 @@ namespace GenTime;
  */
 function add_admin_item() {
 
+	\defined( 'GENTIME_VIEW_CAPABILITY' )
+		or \define( 'GENTIME_VIEW_CAPABILITY', 'manage_options' );
+
 	if (
 		   ! \function_exists( 'is_admin_bar_showing' )
 		|| ! \is_admin_bar_showing()
-		|| ! \current_user_can( get_minimum_view_role() )
-	) return;
+		|| ! \current_user_can( \GENTIME_VIEW_CAPABILITY )
+	)
+		return;
 
 	\load_plugin_textdomain(
 		'gentime',
@@ -69,19 +73,4 @@ function add_admin_item() {
 			print( '<style>#wp-admin-bar-gentime .ab-icon:before{font-family:dashicons;content:"\f469";top:2px}</style>' );
 		}
 	);
-}
-
-/**
- * Returns the minimum gentime usage role.
- *
- * @since 2.0.0
- *
- * @return string
- */
-function get_minimum_view_role() {
-	/**
-	 * @since 1.0.0
-	 * @param string $capability The minimum role for the admin bar item is shown to the user.
-	 */
-	return (string) \apply_filters( 'gentime_minimum_role', 'install_plugins' );
 }

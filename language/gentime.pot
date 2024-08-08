@@ -1,17 +1,17 @@
-# Copyright (C) 2021 Sybre Waaijer
-# This file is distributed under the same license as the GenTime plugin.
+# Copyright (C) 2024 Sybre Waaijer
+# This file is distributed under the GLPv3.
 msgid ""
 msgstr ""
-"Project-Id-Version: GenTime 1.1.0\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/1.1.0\n"
+"Project-Id-Version: GenTime 2.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/gentime\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-07-20T03:41:40+00:00\n"
+"POT-Creation-Date: 2024-08-08T12:18:55+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.4.0\n"
+"X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: gentime\n"
 
 #. Plugin Name of the plugin
@@ -34,7 +34,7 @@ msgstr ""
 msgid "https://cyberwire.nl/"
 msgstr ""
 
-#: gentime.php:58
+#: gentime.php:57
 msgctxt "seconds"
 msgid "s"
 msgstr ""
