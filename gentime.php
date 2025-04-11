@@ -26,51 +26,48 @@ namespace GenTime;
  *
  * @hook admin_bar_menu 912
  * @since 2.0.0
+ *
+ * @param \WP_Admin_Bar $wp_admin_bar The WP_Admin_Bar instance.
  */
-function add_admin_item() {
+function add_admin_item( $wp_admin_bar ) {
 
 	\defined( 'GENTIME_VIEW_CAPABILITY' )
 		or \define( 'GENTIME_VIEW_CAPABILITY', 'manage_options' );
 
-	if (
-		   ! \function_exists( 'is_admin_bar_showing' )
-		|| ! \is_admin_bar_showing()
-		|| ! \current_user_can( \GENTIME_VIEW_CAPABILITY )
-	)
+	if ( ! \current_user_can( \GENTIME_VIEW_CAPABILITY ) )
 		return;
 
+	// Redundant for most sites, but the plugin may be loaded via Composer.
 	\load_plugin_textdomain(
 		'gentime',
 		false,
-		\dirname( \plugin_basename( __FILE__ ) ) . '/language'
+		\dirname( \plugin_basename( __FILE__ ) ) . '/language',
 	);
 
-	/**
-	 * @param int $decimals The generation time decimals amount
-	 * @since 1.0.0
-	 */
-	$decimals = (int) \apply_filters( 'gentime_decimals', 3 );
+	echo '<style>#wp-admin-bar-gentime .ab-icon:before{font-family:dashicons;content:"\f469";top:2px}</style>';
 
-	$args = [
-		'id'    => 'gentime',
-		'title' => '<span class="ab-icon"></span><span class="ab-label">'
-			. \number_format_i18n( \timer_float(), $decimals ) . \esc_html_x( 's', 'seconds', 'gentime' )
-			. '</span>',
-		'href'  => '',
-		'meta'  => [
-			'title' => \esc_attr__( 'Page Generation Time', 'gentime' ),
-		],
-	];
-
-	$GLOBALS['wp_admin_bar']->add_node( $args );
-
-	// Will be enqueued with print_late_styles(). Dashicons is a common script, but WP appears to be phasing it out.
+	// Enqueued with print_late_styles(). Dashicons is a common script, but WP appears to be phasing it out.
 	\wp_enqueue_style( 'dashicons' );
 
-	\add_action(
-		'wp_before_admin_bar_render',
-		function () {
-			print( '<style>#wp-admin-bar-gentime .ab-icon:before{font-family:dashicons;content:"\f469";top:2px}</style>' );
-		}
+	$wp_admin_bar->add_node(
+		[
+			'id'    => 'gentime',
+			'title' => \sprintf(
+				'<span class="ab-icon"></span><span class="ab-label">%s</span>',
+				\number_format_i18n(
+					\timer_float(),
+					/**
+					 * @since 1.0.0
+					 * @param int $decimals The generation time decimals amount
+					 */
+					$decimals = (int) \apply_filters( 'gentime_decimals', 3 ),
+				)
+				. \esc_html_x( 's', 'seconds', 'gentime' ),
+			),
+			'href'  => '',
+			'meta'  => [
+				'title' => \esc_attr__( 'Page Generation Time', 'gentime' ),
+			],
+		],
 	);
 }
