@@ -19,6 +19,23 @@ namespace GenTime;
 
 \defined( 'ABSPATH' ) or die;
 
+/**
+ * Gentime plugin
+ * Copyright (C) 2015 - 2025 Sybre Waaijer, CyberWire B.V. (https://cyberwire.nl/)
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 3 as published
+ * by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
+
 \add_action( 'admin_bar_menu', __NAMESPACE__ . '\add_admin_item', 912 );
 
 /**
@@ -27,7 +44,7 @@ namespace GenTime;
  * @hook admin_bar_menu 912
  * @since 2.0.0
  *
- * @param \WP_Admin_Bar $wp_admin_bar The WP_Admin_Bar instance.
+ * @param \WP_Admin_Bar $wp_admin_bar The WP_Admin_Bar instance
  */
 function add_admin_item( $wp_admin_bar ) {
 
@@ -37,7 +54,7 @@ function add_admin_item( $wp_admin_bar ) {
 	if ( ! \current_user_can( \GENTIME_VIEW_CAPABILITY ) )
 		return;
 
-	// Redundant for most sites, but the plugin may be loaded via Composer.
+	// Redundant for most sites, but the plugin may be loaded via Composer
 	\load_plugin_textdomain(
 		'gentime',
 		false,
@@ -46,7 +63,7 @@ function add_admin_item( $wp_admin_bar ) {
 
 	echo '<style>#wp-admin-bar-gentime .ab-icon:before{font-family:dashicons;content:"\f469";top:2px}</style>';
 
-	// Enqueued with print_late_styles(). Dashicons is a common script, but WP appears to be phasing it out.
+	// Enqueued with print_late_styles(). Dashicons is a 'common' script, but WP appears to be phasing it out
 	\wp_enqueue_style( 'dashicons' );
 
 	$wp_admin_bar->add_node(
@@ -60,7 +77,7 @@ function add_admin_item( $wp_admin_bar ) {
 					 * @since 1.0.0
 					 * @param int $decimals The generation time decimals amount
 					 */
-					$decimals = (int) \apply_filters( 'gentime_decimals', 3 ),
+					\apply_filters( 'gentime_decimals', 3 ),
 				)
 				. \esc_html_x( 's', 'seconds', 'gentime' ),
 			),
