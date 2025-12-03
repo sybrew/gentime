@@ -14,7 +14,7 @@
  *
  * @wordpress-plugin
  * Plugin Name: GenTime
- * Plugin URI: https://deploytroy.org/docs/troy-client/
+ * Plugin URI: https://wordpress.org/plugins/gentime
  * Description: GenTime shows the page generation time in the WordPress admin bar.
  * Version: 2.0.0
  * Author: Sybre Waaijer
