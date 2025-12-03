@@ -50,10 +50,10 @@ define( 'GENTIME_VIEW_CAPABILITY', 'manage_options' );
 
 = 2.0.0 =
 
-* Changed: The plugin's rewritten to adhere to my latest coding standards — its old functions are no longer available.
+* Changed: The plugin has been rewritten to adhere to my latest coding standards — its old functions are no longer available.
 * Changed: This plugin now requires PHP 7.4, from PHP 5.2.
 * Changed: The default timer view capability now defaults to `'manage_options'` instead of `'install_plugins'`.
-* Removed: Filter 'gentime_minimum_role' is gone. Use constant `GENTIME_VIEW_CAPABILITY` instead.
+* Removed: Filter `'gentime_minimum_role'` is gone. Use constant `GENTIME_VIEW_CAPABILITY` instead.
 
 = 1.1.0 =
 * Added: Now uses WordPress 5.8's more accurate function, when available, `timer_float()`.
