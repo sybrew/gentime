@@ -1,9 +1,9 @@
 === GenTime: Inspect page generation time ===
 Contributors: Cybr
 Tags: admin bar, generation, performance, time, php
-Requires at least: 5.3.0
-Tested up to: 6.6.1
-Requires PHP: 7.4.0
+Requires at least: 5.3
+Tested up to: 6.9
+Requires PHP: 7.4
 Stable tag: 2.0.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -44,16 +44,16 @@ Add this to `wp-config.php` to change the user capability required to view the t
 define( 'GENTIME_VIEW_CAPABILITY', 'manage_options' );
 `
 
-([List of capabilities.](https://wordpress.org/documentation/article/roles-and-capabilities/#capabilities))
+([List of capabilities](https://wordpress.org/documentation/article/roles-and-capabilities/#capabilities))
 
 == Changelog ==
 
 = 2.0.0 =
 
+* Changed: The plugin's rewritten to adhere to my latest coding standards — its old functions are no longer available.
 * Changed: This plugin now requires PHP 7.4, from PHP 5.2.
-* Changed: The plugin's rewritten; its old functions are no longer available.
-* Changed: The default timer view capability now defaults to `'manage_options'` instead of `'install_plugins'`. You can modify this by defining `GENTIME_VIEW_CAPABILITY` in `wp-config.php`.
-* Removed: Filter 'gentime_minimum_role' is gone.now defaults to `'activate_plugins'` instead of `'install_plugins'`.
+* Changed: The default timer view capability now defaults to `'manage_options'` instead of `'install_plugins'`.
+* Removed: Filter 'gentime_minimum_role' is gone. Use constant `GENTIME_VIEW_CAPABILITY` instead.
 
 = 1.1.0 =
 * Added: Now uses WordPress 5.8's more accurate function, when available, `timer_float()`.

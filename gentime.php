@@ -1,18 +1,29 @@
 <?php
 /**
+ * GenTime
+ *
+ * @package   GenTime
+ * @author    Sybre Waaijer
+ * @copyright 2025 Sybre Waaijer, CyberWire B.V. (https://cyberwire.nl/)
+ * @license   GPLv3
+ * @link      https://github.com/sybrew/gentime/
+ * @access    private
+ *
+ * @troy-repo
+ * Troy: repo.cyberwire.nl
+ *
+ * @wordpress-plugin
  * Plugin Name: GenTime
- * Plugin URI: https://wordpress.org/plugins/gentime/
+ * Plugin URI: https://deploytroy.org/docs/troy-client/
  * Description: GenTime shows the page generation time in the WordPress admin bar.
+ * Version: 2.0.0
  * Author: Sybre Waaijer
  * Author URI: https://cyberwire.nl/
- * Version: 2.0.0
- * License: GLPv3
+ * License: GPLv3
  * Text Domain: gentime
- * Domain Path: /language
  * Requires at least: 5.3
- * Requires PHP: 7.4.0
- *
- * @package GenTime
+ * Tested up to: 6.9
+ * Requires PHP: 7.4
  */
 
 namespace GenTime;
@@ -70,7 +81,7 @@ function add_admin_item( $wp_admin_bar ) {
 		[
 			'id'    => 'gentime',
 			'title' => \sprintf(
-				'<span class="ab-icon"></span><span class="ab-label">%s</span>',
+				'<span class=ab-icon></span><span class=ab-label>%s</span>',
 				\number_format_i18n(
 					\timer_float(),
 					/**
